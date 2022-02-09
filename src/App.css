@@ -44,6 +44,10 @@
    gap: 1em;
 }
 
+.dice-messages{
+   text-align: center;
+}
+
 .dice-card {
    display: flex;
    flex-direction: column;
