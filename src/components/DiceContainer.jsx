@@ -17,8 +17,6 @@ const DiceContainer = () => {
       const allSame = dices.every(dice => dice.value === first)
       if (allSame && allHeld) {
          setTenzies(true)
-         console.log(`you rolled ${rollCount} times`)
-         console.log("you're a winner")
          if (bestScore) {
             if (rollCount < bestScore) {
                setBestScore(rollCount)
