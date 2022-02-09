@@ -7,6 +7,7 @@ import useWindowSize from 'react-use/lib/useWindowSize'
 const DiceContainer = () => {
    const { width, height } = useWindowSize()
    const [dices, setDices] = useState(generateDices())
+   const [bestScore, setBestScore] = useState(localStorage.getItem('bestScore') || null)
    const [rollCount, setRollCount] = useState(0)
    const [tenzies, setTenzies] = useState(false)
 
@@ -18,6 +19,15 @@ const DiceContainer = () => {
          setTenzies(true)
          console.log(`you rolled ${rollCount} times`)
          console.log("you're a winner")
+         if (bestScore) {
+            if (rollCount < bestScore) {
+               setBestScore(rollCount)
+               localStorage.setItem('bestScore', rollCount)
+            }
+         } else {
+            setBestScore(rollCount)
+            localStorage.setItem('bestScore', rollCount)
+         }
       }
    }, [dices])
 
@@ -42,6 +52,7 @@ const DiceContainer = () => {
       setRollCount(0)
       setTenzies(false)
       setDices(generateDices())
+      setBestScore(localStorage.getItem('bestScore'))
    }
 
    function keepDice(id) {
@@ -56,6 +67,7 @@ const DiceContainer = () => {
             <div className="dice-messages">
                <h1>You win !!!</h1>
                <h2>You rolled {rollCount} times</h2>
+               {bestScore && <h2>You high score is {bestScore}</h2>}
             </div>
             <Confetti width={width} height={height}>
             </Confetti>
