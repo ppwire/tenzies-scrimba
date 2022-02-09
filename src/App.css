@@ -1,6 +1,6 @@
 .app {
    background: #F5F5F5;
-   border-radius: 6px;
+   border-radius: 0.5em;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -15,11 +15,34 @@
    text-align: center;
 }
 
+.dice-container {
+   display: grid;
+   grid-template: auto auto / repeat(5, 1fr);
+   gap:1em;
+}
+
+.dice{
+   background: #FFFFFF;
+   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+   width: 4em;
+   height: 4em;
+   border-radius: 0.5em;
+   display: flex;
+}
+
+.dice > *{
+   margin: auto;
+}
+
 .btn {
    border: none;
    background: #5035FF;
    padding: 1em 2em;
-   color:white;
-   border-radius:6px;
+   color: white;
+   border-radius: 0.5em;
    cursor: pointer;
+}
+
+.btn:hover {
+   background: #6851FF;
 }
